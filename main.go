@@ -30,6 +30,11 @@ func main() {
 		tmpl := template.Must(template.ParseFiles("front/index.html"))
 		tmpl.Execute(w, nil)
 	})
+	http.HandleFunc("/login", func(w http.ResponseWriter, r *http.Request) {
+
+		tmpl := template.Must(template.ParseFiles("front/login.html"))
+		tmpl.Execute(w, nil)
+	})
 
 	root, _ := os.Getwd()
 	sf := http.FileServer(http.Dir(root + "/front"))
